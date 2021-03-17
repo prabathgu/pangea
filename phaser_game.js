@@ -1,5 +1,5 @@
 
-const continents = ['eurasia', 'africa', 'antarctica', 'south_america', 'australia', 'india', 'north_america'];
+const continents = ['north_america', 'eurasia', 'india', 'south_america', 'africa', 'antarctica', 'australia' ];
 
 var selected // The currently selected piece
 var rotator // The rotation widget
@@ -69,7 +69,7 @@ class Game extends Phaser.Scene {
             }, this);
 
             x += image.displayWidth/2 + 30;
-            if (x >= width) {
+            if (x >= width - 200) {
                 y += 300;
                 x = 100;
             }
