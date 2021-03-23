@@ -23,9 +23,10 @@ class Title extends Phaser.Scene {
         
         console.log('Hello');
         
-        new Bubble(this, width / 2 - 150, height / 2 + 150, '  Click to Begin  ').setCallback(() => {
-            this.scene.start('game');
-        })
+        new Bubble(this, width / 2 - 150, height / 2 + 150, '  Click to Begin  ', 
+            { fontSize: 40 }).setCallback(() => {
+                this.scene.start('game');
+            })
     }
 }
 
