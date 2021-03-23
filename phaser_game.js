@@ -44,9 +44,10 @@ class Game extends Phaser.Scene {
 
     create () {
         let { width, height } = this.sys.game.canvas;
-        let fossil_key = this.add.image(width/2, height-110, 'fossil_key');
-        fossil_key.displayWidth = width - 300;
-        fossil_key.displayHeight = fossil_key.height * (width - 300) / fossil_key.width;
+        let fossil_key = this.add.image(width/2, height-100, 'fossil_key');
+        let scale = 0.75;
+        fossil_key.displayWidth = scale * (width - 300);
+        fossil_key.displayHeight = scale * fossil_key.height * (width - 300) / fossil_key.width;
 
         let x = 100, y = 250;
         continents.forEach(continent => {
