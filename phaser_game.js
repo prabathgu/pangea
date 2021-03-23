@@ -7,6 +7,28 @@ var rotator // The rotation widget
 var isMoving // Set to true when a piece is moved
 var isBackgroundClick // Set to true when user clicks on the clear background
 
+class Title extends Phaser.Scene {
+    constructor() {
+        super('title');
+    }
+
+    preload () {
+        this.load.image('title', 'title.png');
+    }
+
+    create() {
+        let { width, height } = this.sys.game.canvas;
+        this.add.image(width/2, height/2, 'title');
+    
+        
+        console.log('Hello');
+        
+        new Bubble(this, width / 2 - 150, height / 2 + 150, '  Click to Begin  ').setCallback(() => {
+            this.scene.start('game');
+        })
+    }
+}
+
 class Game extends Phaser.Scene {
     constructor() {
         super('game');
@@ -117,8 +139,8 @@ class Game extends Phaser.Scene {
 
         this.input.on('pointerdown', function(pointer){
             isBackgroundClick = true;
-         });
-         this.input.on('pointerup', function(pointer){
+        });
+        this.input.on('pointerup', function(pointer){
             if (isBackgroundClick) {
                 if (selected) {
                     selected.tint = 0xffffff;
@@ -126,11 +148,12 @@ class Game extends Phaser.Scene {
                 }
                 rotator.setVisible(false);
             }
-         });
+        });
 
-         isMoving = false;
-         isBackgroundClick = false;        
-        }
+        isMoving = false;
+        isBackgroundClick = false;
+    }
+    
 }
 
 let config = {
@@ -141,7 +164,7 @@ let config = {
         height: 900
     },
     backgroundColor: '#FFFFFF',
-    scene: [Game]
+    scene: [Title, Game]
 };
 
 let game = new Phaser.Game(config);
